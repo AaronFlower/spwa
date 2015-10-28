@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Chat Spa</title>
+	<style type="text/css">
+		body {
+			height		: 100%;
+			width		: 100%;
+			overflow	: hidden;
+			background-color: #777;
+		}
+		#spa {
+			position: absolute;
+			left: 8px;
+			top: 8px;
+			right: 8px;
+			bottom: 8px;
+			border-radius: 8px 8px 0 8px;
+			background-color: #eee;
+		}
+
+		#spa .spa-slider {
+			position: absolute;
+			right: 8px;
+			bottom: 0px;
+			width: 300px;
+			height: 18px;
+			cursor: pointer;
+			border-radius: 8px 0px 0px 0px;
+			background-color: #f00;
+		}
+	</style>
+	<script type="text/javascript" src="./../jquery-2.1.4.js"></script>
+	<script type="text/javascript">
+		var spa = (function ( $ ) {
+			var 
+				configMap = {
+					extended_height : 434,
+					extended_title 	: 'Click to retract!',
+					retracted_height: 18,
+					retracted_title : 'Click to extend!',
+					template_html	: '<div class = "spa-slider">'
+				},
+			$chatSlider, 
+			toggleSlider, onClickSlider, initModule
+			;
+
+
+		toggleSlider = function( ){
+			var slider_height = $chatSlider.height();
+
+			if(slider_height === configMap.extended_height){
+				$chatSlider
+					.animate( { height : configMap.retracted_height })
+					.attr('title', configMap.retracted_title);
+				return true;
+			}
+			else if(slider_height === configMap.retracted_height){
+				$chatSlider
+					.animate( { height : configMap.extended_height })
+					.attr('title', configMap.extended_title);
+				return true;
+			}
+			return false;
+		}
+
+		onClickSlider = function( event ){
+			return toggleSlider();
+		}
+
+		initModule = function( $container ){
+			$container.html( configMap.template_html );
+			$chatSlider = $container.find('.spa-slider');
+
+			$chatSlider
+				.attr( 'title', configMap.retracted_title )
+				.click(onClickSlider);
+
+		}
+
+		return { initModule : initModule };
+		})(jQuery);
+
+		jQuery(document).ready( function(){
+			spa.initModule( $('#spa') );
+		} );
+
+	</script>
+</head>
+<body>
+	<div id="spa"></div>
+</body>
+</html>
