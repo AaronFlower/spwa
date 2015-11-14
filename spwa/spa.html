@@ -1,11 +1,19 @@
 <!DOCTYPE html>
+<!-- 
+	spa.html
+	sap browser document
+ -->
+
 <html>
 <head>
-	<meta charset="utf8"/>
-	<title>SPA Starter</title>
+	<!-- ie9+ rendering support for lastest standards -->
+	<meta http-equiv="Content-Type" content="text/html"; charset="utf8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>SPA Chapter 4</title>
 
 	<!-- sytle sheets -->
 	<link rel="stylesheet" type="text/css" href="css/spa.css" type="text/css">
+	<link rel="stylesheet" type="text/css" href="css/spa.chat.css" type="text/css">
 	<link rel="stylesheet" type="text/css" href="css/spa.shell.css" type="text/css">
 
 	<!-- third party javascript -->
@@ -14,7 +22,10 @@
 
 	<!-- our javascript -->
 	<script type="text/javascript" src="js/spa.js"></script>
+	<script type="text/javascript" src="js/spa.util.js"></script>
+	<script type="text/javascript" src="js/spa.model.js"></script>
 	<script type="text/javascript" src="js/spa.shell.js"></script>
+	<script type="text/javascript" src="js/spa.chat.js"></script>
 	<script type="text/javascript">
 		$(function(){	//也可写成 $( document ).ready( function(){} );
 			spa.initModule( $('#spa') );
